@@ -27,4 +27,10 @@ class Park
             passenger.adult?
         end * admission_price
     end
+
+    def all_attendees
+        list_all_passengers.map do |passenger|
+            passenger.name
+        end
+    end
 end
