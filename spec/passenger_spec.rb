@@ -12,7 +12,15 @@ RSpec.describe Passenger do
         expect(@charlie.age).to eq(18)
     end
 
-    it 'can see if charlie is an adult' do
+    it 'can tell if Passenger is an adult' do
         expect(@charlie.adult?).to eq(true)
+        expect(@taylor.adult?).to eq(false)
+    end
+
+    it 'can say who is the driver and be able to switch to a passenger that is an adult' do
+        expect(@charlie.driver?).to eq(false)
+
+        @charlie.drive
+        expect(@charlie.driver?).to eq(true)
     end
 end
