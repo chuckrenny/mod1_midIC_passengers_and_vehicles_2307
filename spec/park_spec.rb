@@ -53,4 +53,40 @@ RSpec.describe Park do
 
         expect(@park.revenue_generated).to eq(30)
     end
+
+    it 'can find all attendees names' do
+        @vehicle1.add_passenger(@charlie)
+        @vehicle1.add_passenger(@jude)
+        @vehicle2.add_passenger(@taylor)
+        @vehicle2.add_passenger(@daniel)
+
+        @park.add_vehicle(@vehicle1)
+        @park.add_vehicle(@vehicle2)
+
+        expect(@park.all_attendees).to eq(['Charlie', 'Daniel', 'Jude', 'Taylor'])
+    end
+
+    it 'can find all attendees names who are minors' do
+        @vehicle1.add_passenger(@charlie)
+        @vehicle1.add_passenger(@jude)
+        @vehicle2.add_passenger(@taylor)
+        @vehicle2.add_passenger(@daniel)
+
+        @park.add_vehicle(@vehicle1)
+        @park.add_vehicle(@vehicle2)
+
+        expect(@park.minors).to eq(['Taylor'])
+    end
+
+    it 'can find all attendees names who are adults' do
+        @vehicle1.add_passenger(@charlie)
+        @vehicle1.add_passenger(@jude)
+        @vehicle2.add_passenger(@taylor)
+        @vehicle2.add_passenger(@daniel)
+
+        @park.add_vehicle(@vehicle1)
+        @park.add_vehicle(@vehicle2)
+
+        expect(@park.adults).to eq(['Charlie', 'Daniel', 'Jude'])
+    end
 end
