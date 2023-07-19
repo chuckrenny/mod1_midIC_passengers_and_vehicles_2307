@@ -2,10 +2,11 @@ require 'spec_helper'
 
 RSpec.describe Vehicle do
     before(:each) do
-        @charlie = Passenger.new({"name" => "Charlie", "age" => 18})
-        @taylor = Passenger.new({"name" => "Taylor", "age" => 12})
-
         @vehicle = Vehicle.new("2001", "Honda", "Civic")
+
+        @charlie = Passenger.new({"name" => "Charlie", "age" => 18})
+        @jude = Passenger.new({"name" => "Jude", "age" => 20})
+        @taylor = Passenger.new({"name" => "Taylor", "age" => 12})
     end
 
     it 'can initialize and access attributes' do
@@ -21,5 +22,14 @@ RSpec.describe Vehicle do
 
         @vehicle.speed
         expect(@vehicle.speeding?).to eq(true)
+        expect(@vehicle.passengers).to eq([])
+    end
+
+    it 'can add passengers to the vehicle' do
+        @vehicle.add_passenger(@charlie)
+        @vehicle.add_passenger(@jude)
+        @vehicle.add_passenger(@taylor)
+
+        expect(@vehicle.passengers).to eq([@charlie, @jude, @taylor])
     end
 end
