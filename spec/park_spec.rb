@@ -65,4 +65,16 @@ RSpec.describe Park do
 
         expect(@park.all_attendees).to eq(['Charlie', 'Jude', 'Taylor', 'Daniel'])
     end
+
+    it 'can find all attendees names who are minors' do
+        @vehicle1.add_passenger(@charlie)
+        @vehicle1.add_passenger(@jude)
+        @vehicle2.add_passenger(@taylor)
+        @vehicle2.add_passenger(@daniel)
+
+        @park.add_vehicle(@vehicle1)
+        @park.add_vehicle(@vehicle2)
+
+        expect(@park.minors).to eq(['Taylor'])
+    end
 end

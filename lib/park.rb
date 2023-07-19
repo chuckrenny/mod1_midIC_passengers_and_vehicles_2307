@@ -33,4 +33,10 @@ class Park
             passenger.name
         end
     end
+
+    def minors
+        list_minors = list_all_passengers.find_all do |passenger|
+            !passenger.adult?
+        end.map(&:name)
+    end
 end
