@@ -16,4 +16,10 @@ RSpec.describe Vehicle do
         expect(@vehicle.passengers).to eq([])
     end
 
+    it 'can check if the vehicle is speeding' do
+        expect(@vehicle.speeding?).to eq(false)
+
+        @vehicle.speed
+        expect(@vehicle.speeding?).to eq(true)
+    end
 end

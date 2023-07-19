@@ -1,7 +1,7 @@
 class Vehicle
     attr_reader :year,
                 :make,
-                :model,
+                :model
     
     attr_accessor :passengers
 
@@ -10,6 +10,14 @@ class Vehicle
         @make = make
         @model = model
         @passengers = []
+        @speed_check = false
     end
-    
+
+    def speed
+        @speed_check = true
+    end
+
+    def speeding?
+        @speed_check
+    end 
 end
