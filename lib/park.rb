@@ -31,12 +31,18 @@ class Park
     def all_attendees
         list_all_passengers.map do |passenger|
             passenger.name
-        end
+        end.sort
     end
 
     def minors
         list_minors = list_all_passengers.find_all do |passenger|
             !passenger.adult?
-        end.map(&:name)
+        end.map(&:name).sort
+    end
+
+    def adults
+        list_adults = list_all_passengers.find_all do |passenger|
+            passenger.adult?
+        end.map(&:name).sort
     end
 end
