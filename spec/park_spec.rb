@@ -15,7 +15,7 @@ RSpec.describe Park do
     it 'can initialize and access attributes' do
         expect(@park).to be_a(Park)
         expect(@park.name).to eq("Veterans Park")
-        expect(@park.admission).to eq(10)
+        expect(@park.admission_price).to eq(10)
         expect(@park.vehicles).to eq([])
     end
 
@@ -28,5 +28,17 @@ RSpec.describe Park do
         @park.add_vehicle(@vehicle1)
         @park.add_vehicle(@vehicle2)
         expect(@park.vehicles).to eq([@vehicle1, @vehicle2])
+    end
+
+    it 'can list all passengers in vehicles that entered the park' do
+        @vehicle1.add_passenger(@charlie)
+        @vehicle1.add_passenger(@jude)
+        @vehicle2.add_passenger(@taylor)
+        @vehicle2.add_passenger(@daniel)
+
+        @park.add_vehicle(@vehicle1)
+        @park.add_vehicle(@vehicle2)
+
+        expect(@park.list_all_passengers).to eq([@charlie, @jude, @taylor, @daniel])
     end
 end
